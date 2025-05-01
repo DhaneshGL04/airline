@@ -18,7 +18,7 @@ class SignUpView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
-            return Response({"message": "회원가입 성공", "user": serializer.data})
+            return Response({"message": "ok", "user": serializer.data})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -33,7 +33,7 @@ class LoginView(views.APIView):
             refresh = RefreshToken.for_user(user)
             tickets_serializer = TicketSerializer(user.ticket_set.all(), many=True)
             return Response({
-                "message": "로그인 성공",
+                "message": "ok",
                 "token": str(refresh.access_token),
                 "user": {
                     "id": user.id,

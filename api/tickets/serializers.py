@@ -79,5 +79,5 @@ class TicketSerializer(serializers.ModelSerializer):
             total_seconds = int(duration.total_seconds())
             hours = total_seconds // 3600
             minutes = (total_seconds % 3600) // 60
-            return f"{hours}시간 {minutes}분"
+            return f"{hours} {minutes}"
         return None
